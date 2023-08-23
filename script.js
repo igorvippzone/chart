@@ -1,4 +1,5 @@
 (() => {
+    const colorPalette = ['#F2C94C', '#EB5757', '#F2994A', '#6FCF97', '#9B51E0', '#2F80ED', '#56CCF2', '#219653']
     const wrapper = document.getElementById('wrapperCanvas');
     const canvas = document.getElementById('myCanvas');
     const context = canvas.getContext('2d');
@@ -36,11 +37,13 @@
     }
 
     function getRandomData(numSectors) {
+        const randomSectors = random(1, numSectors)
         const data = [];
-        for (let i = 0; i < numSectors; i++) {
+
+        for (let i = 0; i < randomSectors; i++) {
             const randomRadius = random(50, 100);
             const randomSection = random(1, 100);
-            const color = getRandomColor();
+            const color = colorPalette[i] || getRandomColor();
 
             data.push({section: randomSection, radius: randomRadius, color});
         }
